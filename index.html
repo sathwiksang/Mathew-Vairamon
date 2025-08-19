@@ -7,9 +7,14 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <title>Dr. Mathew Vairamon, Esq. | Distinguished Attorney at Law</title>
+    
+    <!-- Font Awesome for icons - ensures mobile compatibility -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Cormorant+Garamond:wght@300;400;600;700&family=Crimson+Text:wght@400;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Cormorant+Garamond:wght@300;400;600;700&family=Crimson+Text:wght@400;600&family=Inter:wght@300;400;500;600&display=swap');
-        
         * {
             margin: 0;
             padding: 0;
@@ -172,14 +177,13 @@
             z-index: 1;
         }
 
-        /* Scales of Justice Watermark */
-        .hero::after {
-            content: '⚖';
+        /* Scales of Justice Icon - using Font Awesome */
+        .hero .scales-watermark {
             position: absolute;
             right: 10%;
             top: 50%;
             transform: translateY(-50%);
-            font-size: 400px;
+            font-size: 300px;
             color: rgba(139,115,85,0.05);
             z-index: 1;
         }
@@ -375,13 +379,6 @@
             font-size: 24px;
             color: #8B7355;
             text-align: center;
-        }
-
-        .slide-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
         }
 
         .slider-dots {
@@ -625,7 +622,7 @@
             font-size: 36px;
             color: #8B7355;
             margin-bottom: 20px;
-            opacity: 0.3;
+            opacity: 0.6;
         }
 
         .practice-title {
@@ -861,13 +858,13 @@
             position: relative;
         }
 
-        .publication-category::before {
-            content: '📚';
+        .publication-category .pub-icon {
             position: absolute;
             top: 30px;
             right: 30px;
             font-size: 40px;
             opacity: 0.1;
+            color: #8B7355;
         }
 
         .publication-category h3 {
@@ -1201,6 +1198,10 @@
             .books-gallery {
                 grid-template-columns: repeat(2, 1fr);
             }
+
+            .hero .scales-watermark {
+                font-size: 200px;
+            }
         }
 
         /* Standard Mobile (440×842) and smaller */
@@ -1284,8 +1285,8 @@
                 padding: 20px;
             }
 
-            .hero::after {
-                font-size: 200px;
+            .hero .scales-watermark {
+                font-size: 150px;
                 right: -5%;
             }
 
@@ -1533,36 +1534,35 @@
                 width: 90%;
                 padding: 80px 20px 40px;
             }
+
+            .hero .scales-watermark {
+                font-size: 120px;
+            }
         }
 
         /* CLS Prevention and Performance Optimizations */
-        
-        /* Prevent layout shifts from images */
         .slide-image, .about-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             object-position: center;
-            aspect-ratio: 4/3; /* Maintain consistent aspect ratio */
+            aspect-ratio: 4/3;
         }
 
         .hero-image-slider {
-            min-height: 300px; /* Prevent height jumps */
+            min-height: 300px;
         }
 
-        /* Prevent layout shifts from fonts */
         .firm-name, .hero-title, .section-title {
             font-display: swap;
         }
 
-        /* Skeleton loading states to prevent CLS */
         .practice-card,
         .service-box,
         .book-item {
-            min-height: 200px; /* Prevent height jumping */
+            min-height: 200px;
         }
 
-        /* Image loading states */
         .slide, .about-image-frame {
             background: linear-gradient(135deg, #F5F2ED 0%, #FFFFFF 100%);
         }
@@ -1593,7 +1593,6 @@
                 transition: transform 0.1s ease;
             }
 
-            /* Improve tap targets */
             .mobile-menu a {
                 min-height: 44px;
                 display: flex;
@@ -1609,7 +1608,6 @@
                 justify-content: center;
             }
 
-            /* Larger touch targets for small elements */
             .dot {
                 width: 20px;
                 height: 20px;
@@ -1627,7 +1625,7 @@
         .service-box,
         .book-item,
         .timeline-item {
-            will-change: auto; /* Only use will-change when animating */
+            will-change: auto;
         }
 
         /* Reduce motion for accessibility */
@@ -1650,13 +1648,10 @@
         .practice-card,
         .service-box,
         .book-item {
-            transform: translateZ(0); /* Force hardware acceleration */
+            transform: translateZ(0);
             backface-visibility: hidden;
         }
 
-        /* Font loading optimization handled by Google Fonts import with display=swap */
-
-        /* Improve loading performance */
         .lazy-load {
             opacity: 0;
             transition: opacity 0.3s ease;
@@ -1666,7 +1661,6 @@
             opacity: 1;
         }
 
-        /* Privacy protection styles */
         #phone-display, #email-link {
             transition: filter 0.3s ease;
         }
@@ -1676,7 +1670,6 @@
             filter: blur(2px);
         }
         
-        /* Anti-copy protection */
         .no-select {
             -webkit-user-select: none;
             -moz-user-select: none;
@@ -1729,6 +1722,7 @@
 
     <!-- Hero Section with Animated Slider -->
     <section class="hero" id="home">
+        <i class="fas fa-balance-scale scales-watermark"></i>
         <div class="hero-content">
             <div class="hero-text">
                 <div class="hero-subtitle">Distinguished Legal Excellence</div>
@@ -1819,7 +1813,7 @@
         </div>
         <div class="practice-grid">
             <div class="practice-card">
-                <div class="practice-icon">⚖</div>
+                <div class="practice-icon"><i class="fas fa-balance-scale"></i></div>
                 <h3 class="practice-title">Immigration Law</h3>
                 <p class="practice-description">
                     Comprehensive family and business immigration services, including visa applications, 
@@ -1827,7 +1821,7 @@
                 </p>
             </div>
             <div class="practice-card">
-                <div class="practice-icon">🏛</div>
+                <div class="practice-icon"><i class="fas fa-landmark"></i></div>
                 <h3 class="practice-title">Federal Court Practice</h3>
                 <p class="practice-description">
                     Licensed before the Southern Federal Court in Houston and the United States Tax Court, 
@@ -1835,7 +1829,7 @@
                 </p>
             </div>
             <div class="practice-card">
-                <div class="practice-icon">📋</div>
+                <div class="practice-icon"><i class="fas fa-file-invoice-dollar"></i></div>
                 <h3 class="practice-title">IRS & Tax Exemption</h3>
                 <p class="practice-description">
                     Specialized expertise in securing IRS exemptions for non-profit organizations 
@@ -1843,7 +1837,7 @@
                 </p>
             </div>
             <div class="practice-card">
-                <div class="practice-icon">🤝</div>
+                <div class="practice-icon"><i class="fas fa-handshake"></i></div>
                 <h3 class="practice-title">Mediation Services</h3>
                 <p class="practice-description">
                     Harris County certified mediator for general and family disputes, providing 
@@ -1851,7 +1845,7 @@
                 </p>
             </div>
             <div class="practice-card">
-                <div class="practice-icon">📄</div>
+                <div class="practice-icon"><i class="fas fa-file-contract"></i></div>
                 <h3 class="practice-title">Legal Documentation</h3>
                 <p class="practice-description">
                     Comprehensive legal document preparation including contracts, agreements, 
@@ -1859,7 +1853,7 @@
                 </p>
             </div>
             <div class="practice-card">
-                <div class="practice-icon">🛡</div>
+                <div class="practice-icon"><i class="fas fa-shield-alt"></i></div>
                 <h3 class="practice-title">Social Security Law</h3>
                 <p class="practice-description">
                     Dedicated representation in Social Security disability claims, appeals, 
@@ -1877,17 +1871,17 @@
         </div>
         <div class="services-grid">
             <div class="service-box">
-                <div class="service-icon">🌿</div>
+                <div class="service-icon"><i class="fas fa-leaf"></i></div>
                 <h3>Homeopathy Practice</h3>
                 <p>Certified homeopath with multiple diplomas from India and the USA, including credentials from the British Institute of Homeopathy and International Academy of Classical Homeopathy under Prof. George Vithoulkas.</p>
             </div>
             <div class="service-box">
-                <div class="service-icon">✝</div>
+                <div class="service-icon"><i class="fas fa-cross"></i></div>
                 <h3>Christian Ministry</h3>
                 <p>Holding B.Th, M.Div, and Th.D degrees in Theology from Slidell Baptist Seminary. Founded Stafford Bible Chapel in 2014, serving Fort Bend and Harris Counties.</p>
             </div>
             <div class="service-box">
-                <div class="service-icon">🎓</div>
+                <div class="service-icon"><i class="fas fa-graduation-cap"></i></div>
                 <h3>Academic Leadership</h3>
                 <p>Current Lecturer at Prairie View A&M University, teaching Law and Criminal Justice. Former Adjunct Professor at Texas Southern University with faculty advisor experience.</p>
             </div>
@@ -1903,56 +1897,56 @@
         <div class="books-gallery">
             <div class="book-item">
                 <div class="book-cover">
-                    <div class="book-cover-placeholder">📖</div>
+                    <div class="book-cover-placeholder"><i class="fas fa-book-open"></i></div>
                 </div>
                 <div class="book-title">Criminal Behavior Analysis</div>
                 <div class="book-year">ProQuest LLC • 2013</div>
             </div>
             <div class="book-item">
                 <div class="book-cover">
-                    <div class="book-cover-placeholder">🎵</div>
+                    <div class="book-cover-placeholder"><i class="fas fa-music"></i></div>
                 </div>
                 <div class="book-title">Kavyamanjari</div>
                 <div class="book-year">Poems CD • 1995/2008</div>
             </div>
             <div class="book-item">
                 <div class="book-cover">
-                    <div class="book-cover-placeholder">🎶</div>
+                    <div class="book-cover-placeholder"><i class="fas fa-compact-disc"></i></div>
                 </div>
                 <div class="book-title">Lokarakshakan</div>
                 <div class="book-year">Christian Songs • 2001</div>
             </div>
             <div class="book-item">
                 <div class="book-cover">
-                    <div class="book-cover-placeholder">🎼</div>
+                    <div class="book-cover-placeholder"><i class="fas fa-music"></i></div>
                 </div>
                 <div class="book-title">Yesunadhan</div>
                 <div class="book-year">Christian Songs • 2008</div>
             </div>
             <div class="book-item">
                 <div class="book-cover">
-                    <div class="book-cover-placeholder">📚</div>
+                    <div class="book-cover-placeholder"><i class="fas fa-book"></i></div>
                 </div>
                 <div class="book-title">Asha Safalyam</div>
                 <div class="book-year">Ganda Kavyam • 1994</div>
             </div>
             <div class="book-item">
                 <div class="book-cover">
-                    <div class="book-cover-placeholder">📘</div>
+                    <div class="book-cover-placeholder"><i class="fas fa-book"></i></div>
                 </div>
                 <div class="book-title">Nalla Ayalkkaran</div>
                 <div class="book-year">Ganda Kavyam • 1995</div>
             </div>
             <div class="book-item">
                 <div class="book-cover">
-                    <div class="book-cover-placeholder">📗</div>
+                    <div class="book-cover-placeholder"><i class="fas fa-scroll"></i></div>
                 </div>
                 <div class="book-title">Sabhayum Angathuvum</div>
                 <div class="book-year">Assembly Document • 1995</div>
             </div>
             <div class="book-item">
                 <div class="book-cover">
-                    <div class="book-cover-placeholder">📙</div>
+                    <div class="book-cover-placeholder"><i class="fas fa-newspaper"></i></div>
                 </div>
                 <div class="book-title">Prakasa Dhara</div>
                 <div class="book-year">Articles Collection • 1996</div>
@@ -2013,6 +2007,7 @@
         </div>
         <div class="publications-grid">
             <div class="publication-category">
+                <i class="fas fa-books pub-icon"></i>
                 <h3>Books & Dissertations</h3>
                 <ul class="publication-list">
                     <li>An Analysis of Criminal Behavior Among Illegal Immigrants in United States - ProQuest LLC, 2013</li>
@@ -2022,6 +2017,7 @@
                 </ul>
             </div>
             <div class="publication-category">
+                <i class="fas fa-pen-fancy pub-icon"></i>
                 <h3>Academic Contributions</h3>
                 <ul class="publication-list">
                     <li>Chapter on Plea Bargaining in "Crime and Justice" - SAGE Publication, 2014</li>
@@ -2131,8 +2127,6 @@
                 }
             });
         });
-
-        // Scroll effects now handled by optimized requestTick function
 
         // Animate elements on scroll
         const observerOptions = {
